@@ -72,7 +72,9 @@ export function PreviewBody() {
 
     return (
       <>
-        <div>
+        {!show && previewConfig.customFooter ? previewConfig.customFooter : 
+        (<>
+          <div>
           {show ? (
             <ViewOnlyEmoji
               unified={previewEmoji?.unified as string}
@@ -82,9 +84,7 @@ export function PreviewBody() {
               getEmojiUrl={getEmojiUrl}
               className={cx(styles.emoji)}
             />
-          ) : previewConfig.customFooter ? 
-              previewConfig.customFooter : 
-              defaultEmoji ? (
+          ) : defaultEmoji ? (
               <ViewOnlyEmoji
                 unified={emojiUnified(defaultEmoji)}
                 emoji={defaultEmoji}
@@ -94,12 +94,13 @@ export function PreviewBody() {
                 className={cx(styles.emoji)}
               />
             ) : null}
-        </div>
-        <div className={cx(styles.label)}>
-          {show ? emojiName(emoji) : previewConfig.customFooter ? null : defaultText}
-        </div>
+          </div>
+          <div className={cx(styles.label)}>
+            {show ? emojiName(emoji) : defaultText}
+          </div>
+        </>)}
       </>
-    );
+    )
   }
 }
 
