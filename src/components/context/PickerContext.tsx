@@ -35,6 +35,7 @@ export function PickerContextProvider({ children }: Props) {
   const emojiVariationPickerState = useState<DataEmoji | null>(null);
   const reactionsModeState = useState(reactionsDefaultOpen);
   const [isPastInitialLoad, setIsPastInitialLoad] = useState(false);
+  const customFooter = useState<React.ReactNode | null>(null);
 
   useMarkInitialLoad(setIsPastInitialLoad);
 
@@ -53,7 +54,8 @@ export function PickerContextProvider({ children }: Props) {
         searchTerm,
         skinToneFanOpenState,
         suggestedUpdateState,
-        reactionsModeState
+        reactionsModeState,
+        customFooter,
       }}
     >
       {children}
@@ -77,6 +79,7 @@ const PickerContext = React.createContext<{
   disallowMouseRef: React.MutableRefObject<boolean>;
   disallowedEmojisRef: React.MutableRefObject<Record<string, boolean>>;
   reactionsModeState: ReactState<boolean>;
+  customFooter: ReactState<React.ReactNode | null>;
 }>({
   activeCategoryState: [null, () => {}],
   activeSkinTone: [SkinTones.NEUTRAL, () => {}],
@@ -90,7 +93,8 @@ const PickerContext = React.createContext<{
   searchTerm: ['', () => new Promise<string>(() => undefined)],
   skinToneFanOpenState: [false, () => {}],
   suggestedUpdateState: [Date.now(), () => {}],
-  reactionsModeState: [false, () => {}]
+  reactionsModeState: [false, () => {}],
+  customFooter: [null, () =>{}]
 });
 
 type Props = Readonly<{
