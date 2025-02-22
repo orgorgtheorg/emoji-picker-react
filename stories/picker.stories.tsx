@@ -367,6 +367,8 @@ function Template(args) {
             );
             console.log(emoji, event);
           }}
+          previewConfig={{customFooter: (<div>Custom footer</div>), defaultCaption: undefined}}
+          
         />
       </div>
     </React.StrictMode>

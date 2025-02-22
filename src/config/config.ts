@@ -132,6 +132,7 @@ export type PreviewConfig = {
   defaultEmoji: string;
   defaultCaption: string;
   showPreview: boolean;
+  customFooter?: React.ReactNode;
 };
 
 const basePreviewConfig: PreviewConfig = {

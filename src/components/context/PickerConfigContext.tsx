@@ -22,6 +22,7 @@ export function PickerConfigProvider({ children, ...config }: Props) {
 
   return (
     <ConfigContext.Provider value={mergedConfig}>
+      Test
       {children}
     </ConfigContext.Provider>
   );

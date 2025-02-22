@@ -69,6 +69,9 @@ export function PreviewBody() {
     const defaultText = variationPickerEmoji
       ? emojiName(variationPickerEmoji)
       : previewConfig.defaultCaption;
+      console.log('defaultText', defaultText)
+    
+      console.log(previewConfig.customFooter)
 
     return (
       <>
@@ -82,16 +85,18 @@ export function PreviewBody() {
               getEmojiUrl={getEmojiUrl}
               className={cx(styles.emoji)}
             />
-          ) : defaultEmoji ? (
-            <ViewOnlyEmoji
-              unified={emojiUnified(defaultEmoji)}
-              emoji={defaultEmoji}
-              emojiStyle={emojiStyle}
-              size={45}
-              getEmojiUrl={getEmojiUrl}
-              className={cx(styles.emoji)}
-            />
-          ) : null}
+          ) : previewConfig.customFooter ? 
+              previewConfig.customFooter : 
+              defaultEmoji ? (
+              <ViewOnlyEmoji
+                unified={emojiUnified(defaultEmoji)}
+                emoji={defaultEmoji}
+                emojiStyle={emojiStyle}
+                size={45}
+                getEmojiUrl={getEmojiUrl}
+                className={cx(styles.emoji)}
+              />
+            ) : null}
         </div>
         <div className={cx(styles.label)}>
           {show ? emojiName(emoji) : defaultText}
@@ -99,6 +104,15 @@ export function PreviewBody() {
       </>
     );
   }
+}
+
+function SlackConnect() {
+  return <img
+  src={'https://orgorg.com/images/3p/slack/slack-mark.png'}
+  alt={'Connect to Slack'}
+  height={24}
+  width={24}
+/>
 }
 
 export type PreviewEmoji = null | {
