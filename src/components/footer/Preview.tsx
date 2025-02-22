@@ -106,15 +106,6 @@ export function PreviewBody() {
   }
 }
 
-function SlackConnect() {
-  return <img
-  src={'https://orgorg.com/images/3p/slack/slack-mark.png'}
-  alt={'Connect to Slack'}
-  height={24}
-  width={24}
-/>
-}
-
 export type PreviewEmoji = null | {
   unified: string;
   originalUnified: string;
