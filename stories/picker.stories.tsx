@@ -367,7 +367,7 @@ function Template(args) {
             );
             console.log(emoji, event);
           }}
-          previewConfig={{customFooter: (<div>Custom footer</div>), defaultCaption: undefined}}
+          previewConfig={{customFooter: (<div>Custom footer</div>)}}
           
         />
       </div>

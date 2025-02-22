@@ -69,9 +69,6 @@ export function PreviewBody() {
     const defaultText = variationPickerEmoji
       ? emojiName(variationPickerEmoji)
       : previewConfig.defaultCaption;
-      console.log('defaultText', defaultText)
-    
-      console.log(previewConfig.customFooter)
 
     return (
       <>
@@ -99,7 +96,7 @@ export function PreviewBody() {
             ) : null}
         </div>
         <div className={cx(styles.label)}>
-          {show ? emojiName(emoji) : defaultText}
+          {show ? emojiName(emoji) : previewConfig.customFooter ? null : defaultText}
         </div>
       </>
     );
